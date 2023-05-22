@@ -1,0 +1,147 @@
+body {
+	background-color : #323232;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	height: 30px;
+	background-color: grey;
+	display: flex;
+	width: 100%;
+	margin: 0;
+
+}
+
+.container{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column-reverse;
+}
+.editor { 
+   width: 50%;
+   height: 95vh;
+   overflow: auto;
+   border-right: 3px dashed #fff;
+}
+
+.runbtn {
+	height : 80%;
+	margin: 0 50px;
+	cursor: pointer;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+.valbtn {
+	height : 80%;
+	cursor: pointer;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+.runbtn:hover,
+.valbtn:hover {
+	background: #666;
+	transition: all 0.5s ease;
+  }
+
+.clearbtn {
+	position: absolute;
+	height : 24px;
+	right : 40px;
+	bottom: 60px;
+	z-index: 9999;
+	cursor: pointer;
+}
+
+.console {
+	position: absolute;
+	left: 51%;
+	width: 48%;
+	height: 95vh;
+	background-color:black;
+	display: none;
+	overflow: auto;
+	border-left: 3px dashed #fff;
+	margin: 0;
+}
+
+.jqconsole {
+    padding: 0px;
+	padding-left:2px;
+	margin:0px;
+}
+
+.jqconsole-cursor {
+    background-color: gray;
+}
+
+.jqconsole-blurred .jqconsole-cursor {
+    background-color: #666;
+}
+
+
+.jqconsole-prompt {
+    color: #0d0;
+}
+
+.jqconsole-old-prompt {
+    color: #0b0;
+    font-weight: normal;
+}
+
+
+.jqconsole-input {
+    color: #dd0;
+}
+
+.jqconsole-old-input {
+    color: #bb0;
+    font-weight: normal;
+}
+
+.jqconsole-output {
+    color: white;
+}
+
+/* Idiomas */
+.dropdown{
+	position: absolute;
+    height: 25px;
+	right: 50px;
+}
+
+.dropbtn{
+    cursor: pointer;
+    font-weight: 600;
+    height: 100%;
+    width: 100%;	
+    position: relative; 
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	z-index: 9999;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+    background-color: white;
+}
+
+.items:hover{
+    background-color: rgb(14, 113, 80);
+    color: white;
+}

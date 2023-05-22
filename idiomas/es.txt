@@ -1,0 +1,4 @@
+runbtn = Iniciar
+valbtn = Validar
+idioma = Idioma
+clearbtn = Limpiar

@@ -10,7 +10,7 @@
 <COMMENT>\n       { ; }
 <COMMENT>.          { ; }
 
-"#"                		  	{ this.begin('OTHER_COMMENT'); }
+"//"                		  	{ this.begin('OTHER_COMMENT'); }
 <OTHER_COMMENT>\n       	{ this.begin('INITIAL'); }
 <OTHER_COMMENT>.          	{ ; }
 
@@ -52,6 +52,7 @@
 "do"					return 'do';
 
 
+"booleano"         return 'BOOLEAN';
 [0-9]+("."[0-9]+)?\b  	{return 'NUMBER';}
 [a-zA-Z]([a-zA-Z]|[0-9])* { return 'IDENT';}
 '"'.*?'"'			{ console.log(yytext); return 'STRING';}
@@ -122,6 +123,18 @@ funcdef
 		functions[$2] = mainFunc; 
 	}
 ;
+
+for_loop
+	: 'enciclar' '(' expr ';' expr ';' expr ')' '{' stmt '}' {
+		$$ = new AstNode('for_loop', {
+			initialization: $3,
+			condition: $5,
+			increment: $7,
+			body: $10
+		});
+	}
+;
+
 selection 
 	: 'siacaso' '(' expr ')' '{' stmt  '}'	{
 		$$ = new AstNode('siacaso', {left : $3, right : $6});

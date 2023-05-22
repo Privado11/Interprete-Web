@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="gramatica/gramatica.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/idiomas.js"></script>
+    <script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/jqconsole.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <title>Intérprete Web</title>
+</head>
+<body>
+    <div class="navbar">
+        <button class="runbtn" id="runbtn"></button>
+        <button class="valbtn" id="valbtn"></button>
+        <div class="dropdown">
+            <button class="dropbtn" id="idioma"></button>
+            <div class="dropdown-content">
+                <a class="items" href="#" data-lang="es">Español</a>
+                <a class="items" href="#" data-lang="en">English</a>
+                <a class="items" href="#" data-lang="fr">Français</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="editor" id="editor">//¡Bienvenido!
+// Asignaciones
+x = 6
+y = 10.5
+z = 0
+
+// Condicional
+siacaso(x > 10){
+    z = 5
+    presenta "El valor de z es: " + z
+}siacasono{
+    z = 8
+    presenta "El valor de z es: " + z
+}
+
+//Ciclo While
+hagalemientras(y > 6){
+    presenta "El valor de y es: " + y
+    y = y - 1
+}
+
+//Ciclo DoWhile
+do{
+    presenta "El valor de x es: " + x
+}hagalemientras(x < 6)
+
+// Funciones
+fun retornar(valor){
+    echapaca valor
+}
+
+j = retornar(z)
+presenta "El valor de j es: " + j
+        </div>
+        <div class="console" id="console">
+            <button class="clearbtn" id="clearbtn"></button>
+        </div>
+    </div>
+    <script src="js/consola.js"></script>
+</body>
+</html>
