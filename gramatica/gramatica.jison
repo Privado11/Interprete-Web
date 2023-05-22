@@ -52,8 +52,6 @@
 "hacer"					return 'hacer';
 "in"					return 'in';
 
-
-"booleano"         return 'BOOLEAN';
 [0-9]+("."[0-9]+)?\b  	{return 'NUMBER';}
 [a-zA-Z]([a-zA-Z]|[0-9])* { return 'IDENT';}
 '"'.*?'"'			{ console.log(yytext); return 'STRING';}
@@ -146,13 +144,13 @@ selection
 	}
 	; 
 
-line  
-	: line id '=' expr	{
-		// Identifier assigment	
-		var lf= new AstNode('IDENT', {name : $2});	
-		$$ = new AstNode('=', {left : lf, right : $4});
-	}
-	
+	line  
+		: line id '=' expr	{
+			// Identifier assigment	
+			var lf= new AstNode('IDENT', {name : $2});	
+			$$ = new AstNode('=', {left : lf, right : $4});
+		}
+
 	| line id '[' expr ']' '=' expr { 
 		// Assignment of an array index
 		var lf  = new AstNode('arrayindex', {name : $2, index : $4}); 
