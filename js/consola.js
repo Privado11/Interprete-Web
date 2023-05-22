@@ -21,7 +21,6 @@ editor.getSession().setMode("ace/mode/python");
 
 
 
-
 function resultado(){
     speechSynthesis.cancel();
     conso.style.display = "block";

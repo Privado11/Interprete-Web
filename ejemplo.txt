@@ -1,0 +1,47 @@
+//¡Bienvenido!
+// Asignaciones
+x = 6
+y = 10.5
+z = 0
+
+// Condicional
+presenta "Condicional:"
+siacaso(x > 10){
+    z = 5
+    presenta "El valor de z es: " + z
+}siacasono{
+    z = 8
+    presenta "El valor de z es: " + z
+}
+
+// Ciclo For
+presenta "Ciclo For:"
+enciclar(i = 0, i < 5, i = i + 1){
+    siacaso(x < 8){
+        presenta "El valor de x es: " + x
+        x = x + 1
+    }
+}
+
+//Ciclo While
+presenta "Ciclo While:"
+hagalemientras(y > 6){
+    presenta "El valor de y es: " + y
+    y = y - 1
+}
+
+//Ciclo DoWhile
+presenta "Ciclo DoWhile:"
+hacer{
+    presenta "El valor de x es: " + x
+}hagalemientras(x < 6)
+
+// Funciones
+fun retornar(valor){
+    echapaca valor
+}
+
+presenta "Funciones:"
+j = retornar(z)
+presenta "El valor de j es: " + j
+

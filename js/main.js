@@ -164,11 +164,13 @@ function eval(astNode) {
 			break;
 		case 'enciclar':
 			// for loop
+			eval(astNode.left)
 			v = astNode.left.right.value;
-			let con = astNode.right.right.value;
-			let inc = astNode.incremento.right.right.value;
-			for(i = v; i < con; i = i + inc){
+			let p = eval(astNode.right)
+			while(p){
 				eval(astNode.body)
+				eval(astNode.incremento)
+				p = eval(astNode.right)
 			}		
 			break;
 		case 'IDENT': 
