@@ -162,25 +162,14 @@ function eval(astNode) {
 				v = eval(astNode.left);
 			} while (eval(astNode.right));
 			break;
-		case 'forloop':
+		case 'enciclar':
 			// for loop
-			var loopVariable = astNode.loopVariable.name;
-			var startValue = eval(astNode.startValue);
-			var endValue = eval(astNode.endValue);
-			var stepValue = astNode.stepValue ? eval(astNode.stepValue) : 1;
-
-			executionstack.top()[loopVariable] = startValue;
-			if (startValue <= endValue) {
-				while (executionstack.top()[loopVariable] <= endValue) {
-					v = eval(astNode.body);
-					executionstack.top()[loopVariable] += stepValue;
-				}
-			} else {
-				while (executionstack.top()[loopVariable] >= endValue) {
-					v = eval(astNode.body);
-					executionstack.top()[loopVariable] += stepValue;
-				}
-			}
+			v = astNode.left.right.value;
+			let con = astNode.right.right.value;
+			let inc = astNode.incremento.right.right.value;
+			for(i = v; i < con; i = i + inc){
+				eval(astNode.body)
+			}		
 			break;
 		case 'IDENT': 
 			// Look up value in table
@@ -255,6 +244,7 @@ function eval(astNode) {
 			}
 			// Print 
 			jqconsole.Write(strPrint+'\n', 'jqconsole-output');
+			voz(strPrint)
 			break;
 		case 'echapaca': v = eval(astNode.left); break; 
 		case 'NUMBER': v = astNode.value; break;
@@ -263,6 +253,10 @@ function eval(astNode) {
 			left = eval(astNode.left);
 			right = eval(astNode.right);
 			v = (left + right); 	
+			break;
+		case '++': 
+			left = eval(astNode.left);
+			console.log(left)	
 			break;
 		case '-': 
 			left = eval(astNode.left);
@@ -313,3 +307,11 @@ var functions = {
 // Execution stack
 var executionstack = new DataStructures.stack();
 executionstack.push({});
+
+function voz(texto){
+    let mensaje = new SpeechSynthesisUtterance(texto);
+    mensaje.pitch = -1;
+    setTimeout(() => {
+      speechSynthesis.speak(mensaje);
+    }, 100);
+}

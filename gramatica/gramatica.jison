@@ -49,7 +49,8 @@
 "largo"					return 'len';
 "hagalemientras"		return 'hagalemientras';
 "enciclar"				return 'enciclar';
-"do"					return 'do';
+"hacer"					return 'hacer';
+"in"					return 'in';
 
 
 "booleano"         return 'BOOLEAN';
@@ -64,7 +65,7 @@
 /* operator associations and precedence */
 
 %left  '+' '-'
-%left  '*' '/' '%'
+%left  '*' '/' '%' 
 %right  '**'
 %left  '<' '<=' '>' '>=' '==' '!='
 %left UMINUS
@@ -124,17 +125,6 @@ funcdef
 	}
 ;
 
-for_loop
-	: 'enciclar' '(' expr ';' expr ';' expr ')' '{' stmt '}' {
-		$$ = new AstNode('for_loop', {
-			initialization: $3,
-			condition: $5,
-			increment: $7,
-			body: $10
-		});
-	}
-;
-
 selection 
 	: 'siacaso' '(' expr ')' '{' stmt  '}'	{
 		$$ = new AstNode('siacaso', {left : $3, right : $6});
@@ -147,8 +137,12 @@ selection
 		$$ = new AstNode('hagalemientras', {left : $3, right:$6});
 	}
 
-	| 'do' '{' stmt '}' 'hagalemientras' '(' expr ')' {
+	| 'hacer' '{' stmt '}' 'hagalemientras' '(' expr ')' {
   		$$ = new AstNode('dowhile', {left: $3, right: $7});
+	}
+
+	| 'enciclar' '(' line ',' expr ',' line ')' '{' stmt '}' {
+		$$ = new AstNode('enciclar', {left : $3, right:$5, incremento:$7, body:$10});
 	}
 	; 
 

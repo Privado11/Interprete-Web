@@ -1,4 +1,5 @@
 runbtn = Iniciar
 valbtn = Validar
+silbtn = Silenciar
 idioma = Idioma
 clearbtn = Limpiar

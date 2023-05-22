@@ -23,6 +23,7 @@ editor.getSession().setMode("ace/mode/python");
 
 
 function resultado(){
+    speechSynthesis.cancel();
     conso.style.display = "block";
     resetForRun();
 	try {
@@ -34,12 +35,13 @@ function resultado(){
 		} 
 	} catch(exception) {
 		jqconsole.Write(exception + '\n\n', 'jqconsole-output');
+        voz(exception)
 	}
 	jqconsole.Write('>> ','jqconsole-output');
-
 }
 
 function validar(){
+    speechSynthesis.cancel();
     conso.style.display = "block";
     resetForRun();
 	try {
@@ -47,16 +49,30 @@ function validar(){
 		if(output == true) {
 			jqconsole.Write('The program contains no errors.', 'jqconsole-output');
 			jqconsole.Write('\n', 'jqconsole-output');
+            let texto = 'The program contains no errors.'
+            voz(texto);
 		} 
 	} catch(exception) {
 		jqconsole.Write(exception + '\n\n', 'jqconsole-output');
+        voz(exception)
 	}
 	jqconsole.Write('>> ','jqconsole-output');
-
 }
 
 $( "#clearbtn" ).click(function() {
 	jqconsole.Reset();
 });
+
+$( "#silbtn" ).click(function() {
+	speechSynthesis.cancel();;
+});
+
+function voz(texto){
+    let mensaje = new SpeechSynthesisUtterance(texto);
+    mensaje.pitch = -1;
+    setTimeout(() => {
+      speechSynthesis.speak(mensaje);
+    }, 100);
+}
 
  

@@ -1,4 +1,5 @@
 runbtn = Run
 valbtn = Validate
+silbtn = Mute
 idioma = Language
 clearbtn = Clear
