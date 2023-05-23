@@ -4,6 +4,14 @@ body {
 	padding: 0;
 }
 
+body.light-theme {
+	background-color: #ffffff;
+  }
+  
+  body.dark-theme {
+	background-color: #323232;
+  }
+
 .navbar {
 	display: flex;
 	align-items: center;
@@ -118,7 +126,7 @@ body {
 .dropdown{
 	position: absolute;
     height: 25px;
-	right: 50px;
+	right: 100px;
 }
 
 .dropbtn{
@@ -152,4 +160,39 @@ body {
 .items:hover{
     background-color: rgb(14, 113, 80);
     color: white;
+}
+
+.clickDarkMode{
+    display: none;
+}
+
+.DarkMode{
+	position: absolute;
+	right: 30px;
+	top: 5px;
+    height: 20px;
+    width: 40px;
+    background: #fff;
+    border-radius: 10px;
+    transition: linear .6s;
+    cursor: pointer;
+}
+.clickDarkMode:checked +label>.DarkMode{
+    background-color:#323232;
+    transition: linear 1.2s;	
+}
+.clickDarkMode:checked +label>.DarkMode::after{
+    background-color:#fff;
+    left: calc(100% - 18px);
+    transition: left linear 1.2s;
+}
+
+.DarkMode::after{
+    content: '';
+    height: 18px;
+    width: 18px;
+    background: #323232;
+    position: absolute;
+    border-radius: 50%;
+    transition: linear 1.2s;
 }

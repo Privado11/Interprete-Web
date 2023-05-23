@@ -4,6 +4,20 @@ iniciar.addEventListener("click", resultado);
 const validarr = document.getElementById('valbtn');
 validarr.addEventListener("click", validar);
 const conso = document.getElementById('console');
+const tema = document.getElementById('clickDarkMode');
+const body = document.body;
+
+tema.addEventListener('change', function() {
+    if (this.checked) {
+        editor.setTheme("ace/theme/textmate");
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+    } else {
+        editor.setTheme("ace/theme/idle_fingers");
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+    }
+  });
 
 let startPrompt = function () {
   jqconsole.Prompt(true, function (input) {
